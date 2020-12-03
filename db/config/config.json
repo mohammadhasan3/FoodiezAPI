@@ -2,9 +2,10 @@
   "development": {
     "username": "postgres",
     "password": "thisisachickenwing",
-    "database": "database_development",
+    "database": "foodiez_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres",
+    "logging": false
   },
   "test": {
     "username": "root",
