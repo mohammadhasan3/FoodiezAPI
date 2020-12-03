@@ -48,10 +48,13 @@ db.Sequelize = Sequelize;
 //One category has many ingredients
 db.Category.hasMany(db.Ingredient, {
   as: "ingredients",
-  foreignkey: { fieldName: "categoryId", allowNull: false },
+  foreignKey: { name: "categoryId", allowNull: false },
 });
 
 //Each ingredient belongs to one category
-db.Ingredient.belongsTo(db.Category, { as: "category" });
+db.Ingredient.belongsTo(db.Category, {
+  as: "category",
+  foreignKey: { name: "categoryId" },
+});
 
 module.exports = db;

@@ -18,8 +18,8 @@ app.use("/media", express.static(path.join(__dirname, "media")));
 
 const run = async () => {
   try {
-    await db.sequelize.sync();
-    // await db.sequelize.sync({ force: true });
+    // await db.sequelize.sync();
+    await db.sequelize.sync({ force: true });
     console.log("Connection to the database successful!");
     await app.listen(8000, () => {
       console.log("The application is running on localhost:8000");
