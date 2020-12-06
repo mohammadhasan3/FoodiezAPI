@@ -1,4 +1,5 @@
 const { Recipe, Ingredient } = require("../db/models");
+const RecipeIngredients = require("../db/models/RecipeIngredients");
 
 //FetchRecipes
 exports.fetchRecipe = async (recipeId, next) => {
@@ -36,6 +37,10 @@ exports.recipeCreate = async (req, res, next) => {
     }
     const newRecipe = await Recipe.create(req.body);
     res.status(201).json(newRecipe);
+
+    req.body.ingredientId = req.ingredient.id;
+    const newRecipeIngredient = await RecipeIngredients.create(req.body);
+    res.status(201).json(newRecipeIngredient);
   } catch (err) {
     next(err);
   }
