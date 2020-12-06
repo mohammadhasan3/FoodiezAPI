@@ -57,4 +57,22 @@ db.Ingredient.belongsTo(db.Category, {
   foreignKey: { name: "categoryId" },
 });
 
+//Ingredients has many recipes
+db.Recipe.belongsToMany(
+  db.Ingredient,
+  { through: "RecipeIngredients" },
+  {
+    as: "ingredients",
+    foreignKey: { name: "recipeId", allowNull: false },
+  }
+);
+db.Ingredient.belongsToMany(
+  db.Recipe,
+  { through: "RecipeIngredients" },
+  {
+    as: "recipe",
+    foreignKey: { name: "ingredientId", allowNull: false },
+  }
+);
+
 module.exports = db;
